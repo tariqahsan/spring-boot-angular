@@ -11,13 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeService } from './employees/shared/employee.service';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
     EmployeeComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    MatConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: MatDialogRef, useValue: {}},
+    {provide: MAT_DIALOG_DATA, useValue: []},
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

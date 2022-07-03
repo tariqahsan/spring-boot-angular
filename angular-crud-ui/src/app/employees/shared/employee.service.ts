@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Employee } from './employee';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -50,12 +51,26 @@ export class EmployeeService {
   }
 
   update(id: any, data: any): Observable<Employee> {
+    console.log("I am in update and id is -> " + id);
     return this.http.put<Employee>(`${this.baseUrl}/employees/update/${id}`, data);
   }
 
-  delete(id: any): Observable<Employee> {
-    return this.http.delete<Employee>(`${this.baseUrl}/employees/delete/${id}`);
+  // delete(id: any): Observable<Employee> {
+  //   console.log(`${this.baseUrl}/employees/delete/${id}`);
+  //   return this.http.delete(`${this.baseUrl}/employees/delete/${id}`);
+  // }
+
+  delete(id: any): Observable<Object> {
+    console.log(`${this.baseUrl}/employees/delete/${id}`);
+    return this.http.delete(`${this.baseUrl}/employees/delete/${id}`);
   }
+
+  
+  populateForm(employee: Employee) {
+    // this.form.setValue(_.omit(employee,'departmentName'));
+    this.form.setValue(employee);
+  }
+
 
   // deleteAll(): Observable<Employee> {
   //   return this.http.delete<Employee>(this.baseUrl);

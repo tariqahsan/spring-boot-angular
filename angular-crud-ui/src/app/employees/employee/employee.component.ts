@@ -4,6 +4,7 @@ import { map, tap } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 import { NotificationService } from 'src/app/employees/shared/notification.service'
 import { EmployeeService } from '../shared/employee.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee',
@@ -11,7 +12,10 @@ import { EmployeeService } from '../shared/employee.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  constructor(public employeeService: EmployeeService, public notificationService: NotificationService) { }
+
+  constructor(public employeeService: EmployeeService, 
+    public notificationService: NotificationService, 
+    public dialogRef: MatDialogRef<EmployeeComponent>) { }
 
   ngOnInit() {}
 
@@ -22,6 +26,12 @@ export class EmployeeComponent implements OnInit {
   onClear() {
     this.employeeService.form.reset();
     this.employeeService.initializeFormGroup();
+  }
+
+  onClose() {
+    this.employeeService.form.reset();
+    this.employeeService.initializeFormGroup();
+    this.dialogRef.close();
   }
 
   // checkboxChange(checkboxValue: string) {
@@ -46,6 +56,7 @@ export class EmployeeComponent implements OnInit {
 
       this.employeeService.form.reset();
       this.notificationService.success(':: Submitted successfully');
+      this.onClose();
     }
   }
 
