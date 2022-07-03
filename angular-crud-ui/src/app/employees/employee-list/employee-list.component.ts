@@ -61,14 +61,6 @@ export class EmployeeListComponent implements AfterViewInit {
     this.dialog.open(EmployeeComponent, dialogConfig);
   }
 
-  // onDelete(id: number) {
-  //   this.empService.delete(id).subscribe( data => {
-  //     console.log("employee data has been deleted successfully!");
-  //   }, (err) => {
-  //     console.log("unable to delete the employee");
-  //   })
-  // }
-  
   onDelete(id: number){
     this.dialogService.openConfirmDialog('Are you sure you want to delete this record?' )
     .afterClosed().subscribe(res =>{
@@ -83,20 +75,6 @@ export class EmployeeListComponent implements AfterViewInit {
       }
     });
   }
-
-  // onDelete(id: number){
-  //   //onDelete(row: any){
-  //   this.dialogService.openConfirmDialog('Are you sure you want to delete this record?' )
-  //   .afterClosed().subscribe(res =>{
-  //     if(res){
-  //       console.log("id is " +id)
-  //       this.empService.delete(id);
-  //       this.notificationService.warn('! Deleted successfully');
-  //     }
-  //   }, (err) => {
-  //     console.log("unable to delete")
-  //   });
-  // }
 }
 
 
