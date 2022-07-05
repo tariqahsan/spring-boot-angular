@@ -35,7 +35,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   // checkboxChange(checkboxValue: string) {
-  //   this.pinRequestService.form.setValue(checkboxValue ? 'Y' : 'N', this.setValueOptions);
+  //   this.employeeService.form.setValue(checkboxValue ? 'Y' : 'N', this.setValueOptions);
   // }
   // setValueOptions(arg0: string, setValueOptions: string) {
   //   throw new Error('Method not implemented.');
