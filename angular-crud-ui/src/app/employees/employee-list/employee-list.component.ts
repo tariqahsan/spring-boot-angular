@@ -45,7 +45,6 @@ export class EmployeeListComponent implements AfterViewInit {
   
   // datasource refresh to show the changes made
   refresh() {
-    console.log("here")
     this.empService.getEmployees().subscribe(
       (data) => {
         this.dataSource = new MatTableDataSource(data);
@@ -64,7 +63,19 @@ export class EmployeeListComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
+  
+  onCreate() {
+    this.empService.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    //this.dialog.open(EmployeeComponent, dialogConfig);
+    // datasource refresh
+    this.dialog.open(EmployeeComponent, dialogConfig).afterClosed().subscribe(result => {
+      this.refresh();
+    });
+  }
   onEdit(row: any) {
     this.empService.populateForm(row);
     const dialogConfig = new MatDialogConfig();
@@ -75,8 +86,7 @@ export class EmployeeListComponent implements AfterViewInit {
     this.dialog.open(EmployeeComponent, dialogConfig).afterClosed().subscribe(result => {
       this.refresh();
     });
-    
-    console.log("back!");
+
   }
 
   onDelete(id: number){
