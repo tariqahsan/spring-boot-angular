@@ -1,0 +1,42 @@
+<mat-toolbar>
+    <span>{{employeeService.form.controls['id'].value?"Modify Employee":"New Employee"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="employeeService.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controls-container">
+                <input type="hidden" formControlName="id">
+                <mat-form-field appearance="legacy">
+                    <input formControlName="firstName" matInput placeholder="First Name*">
+                    <mat-error>First Name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input formControlName="lastName" matInput placeholder="Last Name" required>
+                    <mat-error>Last Name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input formControlName="address" matInput placeholder="Address*">
+                    <mat-error>Address is required</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+       <mat-grid-tile>
+            <div class="controls-container">         
+                <mat-form-field appearance="legacy">
+                    <input formControlName="phone"  matInput placeholder="Phone" required>
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <input formControlName="email" matInput placeholder="Email*">
+                         <!-- <mat-error *ngIf="employeeService.form.controls['employee.email'].errors?.required">Email is required</mat-error>
+                        <mat-error *ngIf="employeeService.form.controls['employee.email'].errors?.email">Email is invalid</mat-error> -->
+                </mat-form-field>
+                <div class="button-row">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="employeeService.form.invalid">Submit</button>
+                    <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                </div>     
+            </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+</form>
