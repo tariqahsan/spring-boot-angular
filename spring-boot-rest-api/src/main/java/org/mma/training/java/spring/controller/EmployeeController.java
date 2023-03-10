@@ -54,7 +54,7 @@ public class EmployeeController {
 	
 	@PostMapping("/employees/add") 
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
-		
+		System.out.println("ID is -->" + employee.getId());
 		return new ResponseEntity<Employee>(employeeRepository.save(employee), HttpStatus.CREATED);
 		
 	}
