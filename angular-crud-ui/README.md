@@ -25,3 +25,26 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+NOTE:
+Because the current Angular version is 18
+and this angular app is using version 12 will get -
+
+modules\webpack\lib\NormalModule.js:819:5 {
+  opensslErrorStack: [
+    'error:03000086:digital envelope routines::initialization error',
+    'error:0308010C:digital envelope routines::unsupported'
+  ],
+  library: 'digital envelope routines',
+  reason: 'unsupported',
+  code: 'ERR_OSSL_EVP_UNSUPPORTED'
+}
+
+Node.js v20.14.0
+
+To resolve this issue run -
+# linux
+export NODE_OPTIONS=--openssl-legacy-provider
+# windows
+set NODE_OPTIONS=--openssl-legacy-provider
