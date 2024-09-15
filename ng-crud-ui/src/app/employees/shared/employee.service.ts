@@ -52,7 +52,7 @@ export class EmployeeService {
 
   update(id: any, data: any): Observable<Employee> {
     console.log("I am in update and id is -> " + id);
-    return this.http.put<Employee>(`${this.baseUrl}/employees/update/${id}`, data);
+    return this.http.put<Employee>(`${this.baseUrl}/employee/update/${id}`, data);
   }
 
   // delete(id: any): Observable<Employee> {
