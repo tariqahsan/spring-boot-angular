@@ -1,0 +1,21 @@
+.user-form-card {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .form-section {
+    margin-bottom: 20px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+
+  .users-table-card {
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  

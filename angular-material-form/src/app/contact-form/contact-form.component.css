@@ -1,0 +1,36 @@
+/* .contact-form-card {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .form-section {
+    margin-bottom: 20px;
+  }
+  
+  .full-width {
+    width: 100%;
+  } */
+
+  .contact-form-card {
+    max-width: 800px; /* Increased max-width */
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .contact-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 16px; /* Space between grid items */
+  }
+  
+  .form-field {
+    width: 100%; /* Ensure each form field takes up its column's width */
+  }
+  
+  /* Optional: Adjust label position for multi-column layouts */
+  mat-form-field {
+    display: block; /* Ensures each form field takes up full width of grid cell */
+  }
+  
+  

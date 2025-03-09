@@ -1,0 +1,90 @@
+<mat-card class="contact-form-card">
+    <mat-card-header>
+      <mat-card-title>Contact Us</mat-card-title>
+      <mat-card-subtitle>We'd love to hear from you!</mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-section">
+          <h3>Personal Information</h3>
+  
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Your Full Name</mat-label>
+            <input matInput formControlName="fullName" required />
+            <mat-error *ngIf="contactForm.get('fullName')?.hasError('required') && contactForm.get('fullName')?.touched">
+                Full Name is required.
+            </mat-error>
+              
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Your Email</mat-label>
+            <input matInput type="email" formControlName="email" required />
+            <mat-error *ngIf="contactForm.get('email')?.hasError('required') && contactForm.get('email')?.touched">
+              Email is required.
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('email')?.hasError('email') && contactForm.get('email')?.touched">
+              Please enter a valid email address.
+            </mat-error>
+          </mat-form-field>
+  
+          <h3>Message</h3>
+          <mat-form-field appearance="outline" class="full-width">
+            <textarea matInput formControlName="message" required></textarea>
+            <mat-label>Your Message</mat-label>
+            <mat-error *ngIf="contactForm.get('message')?.hasError('required') && contactForm.get('message')?.touched">
+              Message is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Send</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+
+<!-- Reactive Form-->
+<!-- <h2>Contact Us</h2>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Your Full Name</mat-label>
+    <input matInput formControlName="fullName" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Your Email</mat-label>
+    <input matInput type="email" formControlName="email" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Your Message</mat-label>
+    <textarea matInput formControlName="message" required></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Send</button>
+</form> -->
+
+
+<!-- Template Driven Form 
+ <h2>Contact Us</h2>
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+  <mat-form-field appearance="fill">
+    <mat-label>Your Full Name</mat-label>
+    <input matInput name="fullName" ngModel required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Your Email</mat-label>
+    <input matInput type="email" name="email" ngModel required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Your Message</mat-label>
+    <textarea matInput name="message" ngModel required></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Send</button>
+</form> -->
+
