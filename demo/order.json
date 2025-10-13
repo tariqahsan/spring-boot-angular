@@ -1,0 +1,21 @@
+{
+    "customer": {
+    "name": "Tariq Ahsan",
+    "email": "tariqahsan@yahoo.com",
+    "gender": "Male",
+    "products": [
+        {
+        "pid": 100,
+        "productName": "Hisense TV",
+        "qty": 1,
+        "price": 400
+        },
+        {
+        "pid": 110,
+        "productName": "Maytag Washer",
+        "qty": 1,
+        "price": 350
+        }
+    ]
+   }
+}
