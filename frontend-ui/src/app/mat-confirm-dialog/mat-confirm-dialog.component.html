@@ -1,0 +1,11 @@
+<div>
+  <div class="content-container">
+    <mat-icon style="font-size:40px;width:40px;height:40px;color:var(--danger);margin-bottom:4px;">
+      error_outline
+    </mat-icon>
+    <mat-icon id="close-icon" (click)="closeDialog()">close</mat-icon>
+    <span class="content-span full-width">{{ data.message }}</span>
+  </div>
+  <button mat-flat-button id="no-button" [mat-dialog-close]="false">NO</button>
+  <button mat-flat-button id="yes-button" [mat-dialog-close]="true">YES</button>
+</div>

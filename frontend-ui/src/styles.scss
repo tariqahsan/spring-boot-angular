@@ -1,0 +1,419 @@
+@use '@angular/material' as mat;
+
+/* ─── Google Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── Design Tokens ────────────────────────────────────────────── */
+:root {
+  --navy-900:   #0a1628;
+  --navy-800:   #0f2040;
+  --navy-700:   #162d57;
+  --navy-600:   #1e3a6e;
+  --navy-500:   #264d8e;
+  --gold-400:   #c9a84c;
+  --gold-300:   #e0be78;
+  --surface-0:  #ffffff;
+  --surface-1:  #f4f6fa;
+  --surface-2:  #e8ecf4;
+  --surface-3:  #d4dbe9;
+  --text-primary:   #0a1628;
+  --text-secondary: #4a5568;
+  --text-muted:     #8896aa;
+  --success:  #2d7a4f;
+  --danger:   #c0392b;
+  --border:   rgba(10, 22, 40, 0.10);
+  --shadow-sm: 0 1px 3px rgba(10,22,40,0.08), 0 1px 2px rgba(10,22,40,0.06);
+  --shadow-md: 0 4px 12px rgba(10,22,40,0.10), 0 2px 4px rgba(10,22,40,0.06);
+  --shadow-lg: 0 16px 40px rgba(10,22,40,0.14), 0 4px 12px rgba(10,22,40,0.08);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+/* ─── Material Theme ───────────────────────────────────────────── */
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+/* ─── Base ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--surface-1);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── App Toolbar ──────────────────────────────────────────────── */
+mat-toolbar.app-toolbar {
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 16px rgba(10,22,40,0.30) !important;
+  border-bottom: 2px solid var(--gold-400) !important;
+  height: 64px !important;
+  padding: 0 28px !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: var(--font-sans) !important;
+
+  .brand-badge {
+    background: var(--gold-400);
+    color: var(--navy-900);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-right: 12px;
+  }
+
+  .brand-title {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .toolbar-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ─── Page Shell ───────────────────────────────────────────────── */
+.page-shell {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 32px 28px;
+}
+
+/* ─── Section Card ─────────────────────────────────────────────── */
+.section-card {
+  background: var(--surface-0);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.section-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to right, rgba(22,45,87,0.035), transparent);
+
+  .section-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy-800);
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ─── Filter Bar ────────────────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-1);
+
+  .filter-icon {
+    color: var(--text-muted);
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .search-form-field {
+    flex: 1;
+    max-width: 400px;
+    font-size: 14px;
+    margin-bottom: -1.25em; /* collapse mat-form-field bottom space */
+  }
+}
+
+/* ─── Create Button ────────────────────────────────────────────── */
+.btn-create {
+  background: linear-gradient(135deg, var(--navy-600), var(--navy-800)) !important;
+  color: #fff !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.02em !important;
+  height: 38px !important;
+  padding: 0 18px !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid var(--gold-400) !important;
+  transition: all 0.2s ease !important;
+  font-family: var(--font-sans) !important;
+
+  .mat-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 4px !important;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, var(--navy-700), var(--navy-900)) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-1px);
+  }
+}
+
+/* ─── Mat Table ────────────────────────────────────────────────── */
+.employee-table {
+  width: 100%;
+
+  /* Header */
+  .mat-mdc-header-row,
+  thead tr {
+    background: var(--navy-900) !important;
+    height: 44px !important;
+  }
+
+  .mat-mdc-header-cell,
+  th.mat-header-cell {
+    color: rgba(255,255,255,0.75) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.07em !important;
+    text-transform: uppercase !important;
+    border-bottom: none !important;
+    padding: 0 16px !important;
+    font-family: var(--font-mono) !important;
+  }
+
+  /* Rows */
+  .mat-mdc-row,
+  tr.mat-row {
+    height: 52px !important;
+    transition: background 0.15s ease;
+    border-bottom: 1px solid var(--border) !important;
+
+    &:hover { background: rgba(22, 45, 87, 0.04) !important; }
+    &:last-child { border-bottom: none !important; }
+  }
+
+  .mat-mdc-cell,
+  td.mat-cell {
+    font-size: 13.5px !important;
+    color: var(--text-primary) !important;
+    padding: 0 16px !important;
+    border-bottom: none !important;
+    font-family: var(--font-sans) !important;
+  }
+
+  /* Typed columns */
+  .col-id    { font-family: var(--font-mono) !important; font-size: 12px !important; color: var(--text-muted) !important; width: 64px; }
+  .col-firstname, .col-lastname { font-weight: 500; }
+  .col-phone { font-family: var(--font-mono) !important; font-size: 12.5px !important; color: var(--text-secondary) !important; white-space: nowrap; }
+  .col-email { font-family: var(--font-mono) !important; font-size: 12.5px !important; color: var(--navy-600) !important; }
+  .col-actions { width: 88px; text-align: right !important; }
+}
+
+/* ─── Action Icon Buttons ───────────────────────────────────────── */
+.action-btn {
+  color: var(--text-muted) !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all 0.15s ease !important;
+
+  .mat-icon { font-size: 18px !important; width: 18px !important; height: 18px !important; }
+
+  &.edit-btn:hover   { color: var(--navy-600) !important; background: rgba(22,45,87,0.08) !important; }
+  &.delete-btn:hover { color: var(--danger)   !important; background: rgba(192,57,43,0.08) !important; }
+}
+
+/* ─── Paginator ─────────────────────────────────────────────────── */
+.mat-mdc-paginator {
+  background: var(--surface-1) !important;
+  border-top: 1px solid var(--border) !important;
+  font-size: 13px !important;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* ─── Employee Dialog Toolbar ───────────────────────────────────── */
+mat-toolbar.dialog-header,
+.mat-toolbar.dialog-header {
+  background: linear-gradient(135deg, var(--navy-900), var(--navy-700)) !important;
+  color: #fff !important;
+  border-bottom: 2px solid var(--gold-400) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  font-family: var(--font-sans) !important;
+  min-height: 56px !important;
+  padding: 0 20px !important;
+}
+
+/* ─── Dialog Form ───────────────────────────────────────────────── */
+form.normal-form {
+  margin: 0;
+  font-family: var(--font-sans);
+
+  .controls-container {
+    width: 100%;
+    padding: 20px 24px;
+
+    mat-form-field { width: 100%; margin-bottom: 4px; }
+  }
+
+  mat-grid-list { background: var(--surface-0); }
+}
+
+/* ─── Dialog Close Button ───────────────────────────────────────── */
+.btn-dialog-close {
+  width: 38px !important;
+  min-width: 0 !important;
+  height: 38px !important;
+  padding: 0 !important;
+  border-radius: var(--radius-sm) !important;
+  color: rgba(255,255,255,0.70) !important;
+  border-color: rgba(255,255,255,0.20) !important;
+  transition: all 0.15s ease !important;
+
+  &:hover {
+    color: #fff !important;
+    background: rgba(255,255,255,0.12) !important;
+  }
+}
+
+/* ─── Submit / Cancel Buttons ───────────────────────────────────── */
+.btn-submit {
+  background: linear-gradient(135deg, var(--navy-600), var(--navy-800)) !important;
+  color: #fff !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--gold-400) !important;
+  box-shadow: var(--shadow-sm) !important;
+  font-family: var(--font-sans) !important;
+  height: 40px !important;
+  padding: 0 20px !important;
+
+  &:hover { box-shadow: var(--shadow-md) !important; }
+  &:disabled { opacity: 0.45 !important; }
+}
+
+.btn-cancel {
+  color: var(--text-secondary) !important;
+  border-color: var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-sans) !important;
+  height: 40px !important;
+  padding: 0 20px !important;
+}
+
+/* ─── Confirm Dialog ────────────────────────────────────────────── */
+.confirm-dialog-container .mat-mdc-dialog-container,
+.confirm-dialog-container .mat-dialog-container {
+  border-radius: var(--radius-md) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.confirm-dialog-container .content-container {
+  margin: 0;
+  padding: 28px 20px 20px;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.confirm-dialog-container span.content-span {
+  padding: 8px 16px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.confirm-dialog-container #close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  transition: color 0.15s ease;
+
+  &:hover { color: var(--text-primary); }
+}
+
+.confirm-dialog-container #no-button {
+  height: 48px;
+  width: 50%;
+  background-color: var(--danger) !important;
+  color: white !important;
+  border-radius: 0 !important;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  transition: filter 0.15s ease;
+
+  &:hover { filter: brightness(1.12); }
+}
+
+.confirm-dialog-container #yes-button {
+  height: 48px;
+  width: 50%;
+  background-color: var(--surface-3) !important;
+  color: var(--text-secondary) !important;
+  border-radius: 0 !important;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  transition: background 0.15s ease;
+
+  &:hover { background-color: var(--surface-2) !important; }
+}
+
+/* ─── Snackbar ───────────────────────────────────────────────────── */
+snack-bar-container.success {
+  background-color: var(--success) !important;
+  color: #fff !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+snack-bar-container.notification simple-snack-bar {
+  font-size: 14px !important;
+  font-weight: 500;
+  font-family: var(--font-sans);
+}
+
+/* ─── Utility ────────────────────────────────────────────────────── */
+.fill-remaining-space { flex: 1 1 auto; }
+.hide { display: none; }
+.button-row button { margin: 5px; }

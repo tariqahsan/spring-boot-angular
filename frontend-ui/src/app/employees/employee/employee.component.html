@@ -1,0 +1,67 @@
+<mat-toolbar class="dialog-header">
+  <span>{{ employeeService.form.controls['id'].value ? 'Modify Employee' : 'New Employee' }}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-toolbar>
+
+<form [formGroup]="employeeService.form" class="normal-form" (submit)="onSubmit()">
+  <mat-grid-list cols="2" rowHeight="300px">
+
+    <!-- Left column -->
+    <mat-grid-tile>
+      <div class="controls-container">
+        <input type="hidden" formControlName="id">
+
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName" matInput placeholder="First Name*">
+          <mat-error>First Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="lastName" matInput placeholder="Last Name*">
+          <mat-error>Last Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input formControlName="address" matInput placeholder="Address*">
+          <mat-error>Address is required</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <!-- Right column -->
+    <mat-grid-tile>
+      <div class="controls-container">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <mat-icon matPrefix style="font-size:18px;width:18px;height:18px;color:var(--text-muted);margin-right:6px;">phone</mat-icon>
+          <input formControlName="phone" matInput placeholder="e.g. 571-555-0100">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <mat-icon matPrefix style="font-size:18px;width:18px;height:18px;color:var(--text-muted);margin-right:6px;">email</mat-icon>
+          <input formControlName="email" matInput placeholder="name@mail.mil">
+        </mat-form-field>
+
+        <div class="button-row" style="display:flex; gap:10px; margin-top:4px;">
+          <button mat-flat-button class="btn-submit" type="submit"
+                  [disabled]="employeeService.form.invalid">
+            Submit
+          </button>
+          <button mat-stroked-button class="btn-cancel" type="button" (click)="onClear()">
+            Clear
+          </button>
+        </div>
+
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</form>
